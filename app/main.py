@@ -5,34 +5,34 @@ import time
 
 
 def track():
+
+    curr = "solana"
+
     init_db()
     session = Session()
-    # Scraper zostawiamy dla produktów z Empiku, CryptoProvider dla walut
     scraper = PriceScraper()
     api = CryptoProvider()
 
-    # Dodajemy Bitcoin do bazy jeśli go nie ma
-    if not session.query(Product).filter_by(url="api://bitcoin").first():
-        btc = Product(name="Bitcoin", url="api://bitcoin")
-        session.add(btc)
+    # Dodajemy walutę do bazy jeśli jej nie ma
+    if not session.query(Product).filter_by(url=f"api://{curr}").first():
+        p = Product(name=curr.capitalize(), url=f"api://{curr}")
+        session.add(p)
         session.commit()
 
     print("--- START MONITORA (Ctrl+C aby zatrzymać) ---")
     try:
         while True:
-            # 1. Pobieranie ceny z API (Bitcoin)
-            btc_product = session.query(Product).filter_by(url="api://bitcoin").one()
-            price = api.get_price("bitcoin")
+            # Pobieranie ceny z API
+            product = session.query(Product).filter_by(url=f"api://{curr}").one()
+            price = api.get_price(curr)
 
             if price:
-                entry = PriceHistory(price=price, product=btc_product)
+                entry = PriceHistory(price=price, product=product)
                 session.add(entry)
                 session.commit()
-                print(f"[{time.strftime('%H:%M:%S')}] Bitcoin: {price} PLN")
+                print(f"[{time.strftime('%H:%M:%S')}] {curr.capitalize()}: {price} PLN")
 
-            # [Opcjonalnie] Tutaj możesz dodać sprawdzanie Empiku raz na godzinę
-
-            time.sleep(30)  # Czekaj 30 sekund przed kolejnym sprawdzeniem
+            time.sleep(30)
     except KeyboardInterrupt:
         print("\nZatrzymano monitor.")
     finally:
