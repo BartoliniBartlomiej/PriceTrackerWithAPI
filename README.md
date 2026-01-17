@@ -1,28 +1,92 @@
-# Universal Price Tracker
+# 📈 Multi-Source Price & Asset Tracker
 
-An automated system for monitoring product prices built with **Python**, **Selenium (Safari)**, and **SQLAlchemy**.
+A professional Python-based monitoring system designed to track both e-commerce products and financial assets (Cryptocurrencies/Currencies) in real-time. This project demonstrates advanced data engineering, web automation, and interactive data visualization.
 
-## Features
+## ✨ Features
 
-* **Universal Scraping:** Uses metadata (Open Graph / Schema.org) to extract prices from various online stores.
-* **Database:** Tracks and stores price changes in SQLite using the SQLAlchemy ORM.
-* **Automation on macOS:** Native support for the Safari browser.
+* **Hybrid Data Sourcing:**
+* **Web Scraping:** Automated price extraction from e-commerce sites (e.g., Empik) using Selenium with native Safari drivers.
+* **REST API Integration:** Real-time financial data fetching (Bitcoin, etc.) via the CoinGecko API.
 
-## Installation & Launch
 
-1. Clone the repository:
-   `git clone https://github.com/BartoliniBartlomiej/PriceTrackerWithAPI.git`
-2. Create a virtual environment:
-   `python3 -m venv venv && source venv/bin/activate`
-3. Install required dependencies:
-   `pip install -r requirements.txt`
-4. **Important:** Enable *“Allow Remote Automation”* in Safari’s Develop menu.
-5. Run the application:
-   `python app/main.py`
+* **Continuous Monitoring:** A persistent tracking engine with configurable intervals and error handling.
+* **Relational Data Storage:** High-performance storage using **SQLAlchemy ORM** and SQLite, preserving full price history.
+* **Interactive Analytics:** A live web dashboard built with **Streamlit**, featuring real-time price metrics and historical charts.
 
-## Technologies
+## 🛠️ Tech Stack
 
-* Python 3.12+
-* Selenium (Safari Driver)
-* SQLAlchemy (SQLite)
-* BeautifulSoup4
+* **Language:** Python 3.12+
+* **Database:** SQLAlchemy (SQLite)
+* **Visualization:** Streamlit, Pandas, Matplotlib
+* **Web Automation:** Selenium (Safari Driver)
+* **Communication:** Requests (REST APIs)
+
+## 📋 Installation & Setup
+
+1. **Clone the repository:**
+```bash
+git clone https://github.com/BartoliniBartlomiej/PriceTrackerWithAPI.git
+cd PriceTrackerWithAPI
+
+```
+
+
+2. **Set up Virtual Environment:**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+
+```
+
+
+3. **Install Dependencies:**
+```bash
+pip install -r requirements.txt
+
+```
+
+
+4. **Safari Automation (macOS):**
+Ensure `Allow Remote Automation` is enabled in Safari's **Develop** menu.
+
+## 🚦 Usage
+
+### 1. Data Collection
+
+Start the background engine to track prices:
+
+```bash
+python app/main.py
+
+```
+
+### 2. Visualization
+# 📈 Multi-Source Price & Asset Tracker
+
+A professional Python-based monitoring system...
+
+![Dashboard Preview](dashboard_preview.png)
+Launch the interactive dashboard:
+
+```bash
+streamlit run app/dashboard.py
+
+```
+
+## 🏗️ Project Structure
+
+* `app/main.py` - Core engine orchestrating scraping and API calls.
+* `app/scraper.py` - Selenium logic for price extraction.
+* `app/providers.py` - API integration for financial assets.
+* `app/database.py` - Database models and SQLAlchemy configuration.
+* `app/dashboard.py` - Streamlit application for data visualization.
+
+## 📈 Roadmap
+
+* [ ] Implement Telegram/Email alerts for price drops.
+* [ ] Containerize the application using Docker.
+* [ ] Integration with Yahoo Finance API.
+
+---
+
+Developed by [Bartlomiej](https://www.google.com/search?q=https://github.com/BartoliniBartlomiej)
