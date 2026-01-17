@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS system files
+.DS_Store
+
+# Database & Secrets
+prices.db
+.env
+
+# PyCharm
+.idea/
