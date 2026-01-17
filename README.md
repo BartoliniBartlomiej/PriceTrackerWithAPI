@@ -11,7 +11,7 @@ An automated system for monitoring product prices built with **Python**, **Selen
 ## Installation & Launch
 
 1. Clone the repository:
-   `git clone https://github.com/TWOJA_NAZWA/PriceTrackerWithAPI.git`
+   `git clone https://github.com/BartoliniBartlomiej/PriceTrackerWithAPI.git`
 2. Create a virtual environment:
    `python3 -m venv venv && source venv/bin/activate`
 3. Install required dependencies:
@@ -26,7 +26,3 @@ An automated system for monitoring product prices built with **Python**, **Selen
 * Selenium (Safari Driver)
 * SQLAlchemy (SQLite)
 * BeautifulSoup4
-
----
-
-Daj znać, jeśli chcesz wersję bardziej marketingową, krótszą lub do README 🎯
